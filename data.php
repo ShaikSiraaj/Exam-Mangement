@@ -7,16 +7,17 @@ if (isset($_POST['got_std'])) {
     $std_password = $_POST['std_password'];
     $rememberme_std_check = $_POST['rememberme_std_check'];
 
-    $count = 0;
-    $res = mysqli_query($db, "SELECT * FROM `add_student` WHERE email= '$std_email' && password= '$std_password';");
-    $count = mysqli_num_rows($res);
-    $array1 = mysqli_fetch_array($res);
+    $stmt = mysqli_prepare($db, "SELECT std_id FROM `add_student` WHERE email = ? AND password = ?");
+    mysqli_stmt_bind_param($stmt, "ss", $std_email, $std_password);
+    mysqli_stmt_execute($stmt);
+    $result = mysqli_stmt_get_result($stmt);
+    $row = mysqli_fetch_assoc($result);
 
-    if ($count == 0) {
-        echo $return = "";
+    if (!$row) {
+        echo "";
     } else {
-        $_SESSION['std_id'] = $array1['std_id'];
-        echo $return = "Logged IN Successfully!";
+        $_SESSION['std_id'] = $row['std_id'];
+        echo "Logged IN Successfully!";
     }
 
     if ($rememberme_std_check == "true") {
@@ -24,6 +25,7 @@ if (isset($_POST['got_std'])) {
         setcookie('Spassword', $std_password, time() + 86400, '/');
     }
 
+    mysqli_stmt_close($stmt);
     die();
 }
 
@@ -32,16 +34,17 @@ if (isset($_POST['got_adm'])) {
     $adm_password = $_POST['adm_password'];
     $rememberme_adm_check = $_POST['rememberme_adm_check'];
 
-    $count = 0;
-    $res = mysqli_query($db, "SELECT * FROM `admin_reg` WHERE emailid= '$adm_email' && password= '$adm_password';");
-    $count = mysqli_num_rows($res);
-    $array1 = mysqli_fetch_array($res);
+    $stmt = mysqli_prepare($db, "SELECT adm_id FROM `admin_reg` WHERE emailid = ? AND password = ?");
+    mysqli_stmt_bind_param($stmt, "ss", $adm_email, $adm_password);
+    mysqli_stmt_execute($stmt);
+    $result = mysqli_stmt_get_result($stmt);
+    $row = mysqli_fetch_assoc($result);
 
-    if ($count == 0) {
-        echo $return = "";
+    if (!$row) {
+        echo "";
     } else {
-        $_SESSION['adm_id'] = $array1['adm_id'];
-        echo $return = "Logged IN Successfully!";
+        $_SESSION['adm_id'] = $row['adm_id'];
+        echo "Logged IN Successfully!";
     }
 
     if ($rememberme_adm_check == "true") {
@@ -49,5 +52,6 @@ if (isset($_POST['got_adm'])) {
         setcookie('Apassword', $adm_password, time() + 86400, '/');
     }
 
+    mysqli_stmt_close($stmt);
     die();
 }
