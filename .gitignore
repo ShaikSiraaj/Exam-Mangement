@@ -1,0 +1,18 @@
+# PHP
+composer.phar
+/vendor/
+
+# Database
+connection_config.php
+
+# Operating System
+.DS_Store
+Thumbs.db
+
+# IDEs
+.vscode/
+.idea/
+
+# Uploads
+admin/uploads/*
+!admin/uploads/.gitkeep

@@ -81,22 +81,33 @@ include "assets/header.php"
         $ext = pathinfo($_FILES["avatar"]["name"], PATHINFO_EXTENSION);
         $target_dir = 'uploads/';
         $destination = "$target_dir$pfpname.$ext";
-        move_uploaded_file($orig_file, $destination);
+
+        if (!empty($_FILES["avatar"]["name"])) {
+            move_uploaded_file($orig_file, $destination);
+        } else {
+            $destination = "";
+        }
 
         $mailCount = 0;
         $tokenCount = 0;
-        $sql = "SELECT * from `admin_reg`";
-        $res = mysqli_query($db, $sql);
 
-        while ($row = mysqli_fetch_assoc($res)) {
-            if ($row['emailid'] == $_POST['emailid']) {
-                $mailCount = $mailCount + 1;
+        // Check for existing email and token
+        $stmt_check = mysqli_prepare($db, "SELECT emailid, special_token FROM `admin_reg` WHERE emailid = ? OR special_token = ?");
+        mysqli_stmt_bind_param($stmt_check, "ss", $emailid, $myToken);
+        mysqli_stmt_execute($stmt_check);
+        $result_check = mysqli_stmt_get_result($stmt_check);
+
+        while ($row = mysqli_fetch_assoc($result_check)) {
+            if ($row['emailid'] == $emailid) {
+                $mailCount++;
             }
-            if ($row['special_token'] == $_POST['specialtoken']) {
-                $tokenCount = $tokenCount + 1;
+            if ($row['special_token'] == $myToken) {
+                $tokenCount++;
             }
         }
-        if ($mailCount == 1) {
+        mysqli_stmt_close($stmt_check);
+
+        if ($mailCount > 0) {
             echo '<script type="text/javascript">
                 swal("Failed", "Email Already Registered", "error");
             </script>';
@@ -105,13 +116,19 @@ include "assets/header.php"
                 swal("Failed", "Token not Registered", "error");
             </script>';
         } else {
-            if (!empty($_FILES['avatar']['name']))  //Update pfp if file uploaded
+            if (!empty($destination))  //Update pfp if file uploaded
             {
-                mysqli_query($db, "UPDATE `admin_reg` SET `image`='$destination',`full_name`='$fname',`contact`='$contact',`emailid`='$emailid',`password`='$password' WHERE `special_token` = '$myToken'");
+                $stmt_upd = mysqli_prepare($db, "UPDATE `admin_reg` SET `image`=?, `full_name`=?, `contact`=?, `emailid`=?, `password`=? WHERE `special_token` = ?");
+                mysqli_stmt_bind_param($stmt_upd, "ssssss", $destination, $fname, $contact, $emailid, $password, $myToken);
             } else  //Not update pfp if file not uploaded
             {
-                mysqli_query($db, "UPDATE `admin_reg` SET `full_name`='$fname',`contact`='$contact',`emailid`='$emailid',`password`='$password' WHERE `special_token` = '$myToken'");
+                $stmt_upd = mysqli_prepare($db, "UPDATE `admin_reg` SET `full_name`=?, `contact`=?, `emailid`=?, `password`=? WHERE `special_token` = ?");
+                mysqli_stmt_bind_param($stmt_upd, "sssss", $fname, $contact, $emailid, $password, $myToken);
             }
+
+            mysqli_stmt_execute($stmt_upd);
+            mysqli_stmt_close($stmt_upd);
+
             echo '<script type="text/javascript">
                 swal("Success", "Registered Successfully!", "success", {
                     timer: 2000,
@@ -131,12 +148,6 @@ include "assets/header.php"
         const file = document.querySelector('#file');
         const uploadBtn = document.querySelector('#uploadBtn');
 
-        // imgDiv.addEventListener('mouseenter', function() {
-        //     uploadBtn.style.display = "block"
-        // });
-        // imgDiv.addEventListener('mouseleave', function() {
-        //     uploadBtn.style.display = "none"
-        // });
         file.addEventListener('change', function() {
             const choosedFile = this.files[0];
             if (choosedFile) {
