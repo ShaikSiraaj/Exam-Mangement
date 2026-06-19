@@ -197,7 +197,8 @@ CREATE TABLE `exam_answers` (
   `std_email` varchar(100) NOT NULL,
   `exam_title` varchar(100) NOT NULL,
   `question` varchar(10000) NOT NULL,
-  `answered` varchar(100) NOT NULL
+  `answered` varchar(100) NOT NULL,
+  `review_status` varchar(100) DEFAULT 'false'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------

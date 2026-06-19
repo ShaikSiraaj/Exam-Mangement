@@ -466,11 +466,12 @@ input[type="number"]::-webkit-outer-spin-button {
 
 .question-part {
     height: 100%;
-    width: 80%;
-    float: left;
+    /* width: 80%; */
+    /* float: left; */
     color: black;
     border-right: 2px solid lightblue;
-    /* background-color: red; */
+    position: relative;
+    padding-bottom: 70px; /* Space for footer */
 }
 
 .question-part #qs_id {
@@ -510,8 +511,8 @@ input[type="number"]::-webkit-outer-spin-button {
 }
 
 .pagination-part {
-    width: 20%;
-    float: right;
+    /* width: 20%; */
+    /* float: right; */
     height: auto;
     max-height: calc(100vh - 55px);
     overflow-x: hidden;
@@ -584,17 +585,17 @@ input[type="number"]::-webkit-outer-spin-button {
     border-radius: 5px;
 }
 
-/* .num-Attempted {
-    color: #fff;
-    background-color: #00b74a;
-    border: 1px solid #00b74a;
-} */
+.num-Attempted {
+    color: #fff !important;
+    background-color: #00b74a !important;
+    border: 1px solid #00b74a !important;
+}
 
-/* .num-NotAttempted {
-    color: #000;
-    background-color: #f0f0f0;
-    border: 1px solid #5f5f5f81;
-} */
+.num-NotAttempted {
+    color: #000 !important;
+    background-color: #f0f0f0 !important;
+    border: 1px solid #5f5f5f81 !important;
+}
 
 .num-NotSelected {
     color: #000;
@@ -603,22 +604,23 @@ input[type="number"]::-webkit-outer-spin-button {
 }
 
 .num-Selected {
-    color: #fff;
-    background-color: #0796e9;
-    border: 1px solid #046eac;
+    color: #fff !important;
+    background-color: #0796e9 !important;
+    border: 1px solid #046eac !important;
+    box-shadow: 0 0 5px rgba(0,0,0,0.5);
 }
 
-/* .num-Review {
-    color: #fff;
-    background-color: #684999;
-    border: 1px solid #684999;
+.num-Review {
+    color: #fff !important;
+    background-color: #f0ad4e !important;
+    border: 1px solid #eea236 !important;
 }
 
 .num-NotAnswered {
-    color: #fff;
-    background-color: #dd2a1a;
-    border: 1px solid #dd2a1a;
-} */
+    color: #fff !important;
+    background-color: #dd2a1a !important;
+    border: 1px solid #dd2a1a !important;
+}
 
 .pagination-part .qs-no-paginate .numID {
     margin: 4px 4.2px 5px;
@@ -660,7 +662,7 @@ input[type="number"]::-webkit-outer-spin-button {
     justify-content: center;
     position: absolute;
     bottom: 0;
-    width: 80%;
+    width: 100%;
     height: 60px;
     border-top: 2px solid lightblue;
     background-color: rgba(145, 145, 255, 0.295);
@@ -1198,4 +1200,31 @@ input[type="number"]::-webkit-outer-spin-button {
     margin-right: auto;
     margin-top: 5%;
     font-weight: 600;
+}
+
+/* Responsive adjustments */
+@media (max-width: 767.98px) {
+    .question-part {
+        border-right: none;
+        border-bottom: 2px solid lightblue;
+        padding-bottom: 80px;
+    }
+    .pagination-part {
+        max-height: none;
+        overflow: visible;
+        margin-bottom: 100px;
+    }
+    #footer {
+        position: fixed;
+        z-index: 1000;
+        width: 100% !important;
+    }
+    .qs-topbar {
+        height: auto;
+        padding: 10px;
+    }
+    .navbar-brand {
+        font-size: 1rem;
+        white-space: normal;
+    }
 }

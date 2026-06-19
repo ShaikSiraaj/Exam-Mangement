@@ -46,8 +46,8 @@ if (!isset($_SESSION['exam_id'])) {
                 ?>
             </nav>
 
-            <div id="qs-content">
-                <div class="question-part">
+            <div id="qs-content" class="row g-0">
+                <div class="question-part col-lg-9 col-md-8">
                     <p id="qs_id">
 
                     </p>
@@ -94,15 +94,16 @@ if (!isset($_SESSION['exam_id'])) {
 
                     </div>
                     <div id="footer">
-                        <span class="pr-3"><button type="button" class="btn btn-primary" id="previous">Previous</button></span>
+                        <span class="pr-3"><button type="button" class="btn btn-primary" id="previous"><i class="fa fa-angle-left"></i> Previous</button></span>
                         <span class="pr-2">
-                            <button type="button" class="btn btn-primary" id="saveNnext">Save & Next</button>
+                            <button type="button" class="btn btn-warning" id="markReview">Mark for Review</button>
+                            <button type="button" class="btn btn-primary" id="saveNnext">Save & Next <i class="fa fa-angle-right"></i></button>
                             <button type="submit" class="btn btn-danger d-none" id="submitPaper">Submit Exam</button>
                         </span>
                     </div>
                 </div>
 
-                <div class="pagination-part">
+                <div class="pagination-part col-lg-3 col-md-4">
 
                     <!-- ####### Timer ####### -->
                     <div id="exam_timer" data-timer="<?php echo $remaining_minutes ?>">
@@ -183,11 +184,47 @@ if (!isset($_SESSION['exam_id'])) {
                 paginationData(page);
             })
 
+            // Mark for Review Btn click
+            $(document).on("click", "#markReview", function() {
+                var qton_no = $(".question_number").attr("id");
+                var std_id = "<?php echo $_SESSION['std_id'] ?>";
+                var std_name = "<?php echo $res2['std_name'] ?>";
+                var std_email = "<?php echo $res2['email'] ?>";
+                var exam_title = "<?php echo $res1['exam_title'] ?>";
+                var question = $("#question." + qton_no).html();
+                var $btn = $(this);
+
+                $.ajax({
+                    type: "POST",
+                    url: "assets/data.php",
+                    data: {
+                        'exam_ans_submit': true,
+                        'review_status_only': true,
+                        'std_id': std_id,
+                        'std_name': std_name,
+                        'std_email': std_email,
+                        'exam_title': exam_title,
+                        'question': question,
+                        'review_status': 'true',
+                    },
+                    success: function(response) {
+                        paginationData(qton_no);
+                        $btn.html('<i class="fa fa-check"></i> Marked').prop('disabled', true);
+                        setTimeout(function() {
+                            $btn.html('Mark for Review').prop('disabled', false);
+                        }, 1000);
+                    }
+                });
+            });
+
             // Save Btn click
             $(document).on("click", "#saveNnext", function() {
                 var qs_no = $(".question_number").attr("id");
                 var page = Number(qs_no) + 1;
                 var last_page = <?php echo $total_pages ?>;
+
+                answer_submit('next');
+
                 if (page >= last_page) {
                     page = last_page;
                     $("#saveNnext").addClass("d-none");
@@ -199,10 +236,28 @@ if (!isset($_SESSION['exam_id'])) {
                     $(".qton").addClass("d-none");
                     $(".qton#" + page).removeClass("d-none");
                 }
-                answer_submit();
+
                 qs_no_append(page);
                 paginationData(page);
             })
+
+            // Keyboard Navigation
+            $(document).keydown(function(e) {
+                switch(e.which) {
+                    case 37: // left arrow
+                        $("#previous").click();
+                        break;
+                    case 39: // right arrow
+                        if ($("#saveNnext").hasClass("d-none")) {
+                            // If on last page, don't auto-click submit, maybe just ignore or handle specially
+                        } else {
+                            $("#saveNnext").click();
+                        }
+                        break;
+                    default: return; // exit this handler for other keys
+                }
+                e.preventDefault(); // prevent the default action (scroll / move caret)
+            });
 
             // Submit Btn click
             $(document).on("click", "#submitPaper", function() {
@@ -226,7 +281,7 @@ if (!isset($_SESSION['exam_id'])) {
             });
 
             // ######### submit answers #########
-            function answer_submit() {
+            function answer_submit(action) {
                 var std_id = "<?php echo $_SESSION['std_id'] ?>";
                 var std_name = "<?php echo $res2['std_name'] ?>";
                 var std_email = "<?php echo $res2['email'] ?>";
@@ -234,6 +289,9 @@ if (!isset($_SESSION['exam_id'])) {
                 var qton_no = $(".question_number").attr("id");
                 var question = $("#question." + qton_no).html();
                 var answered = $("." + qton_no + " input[name='answer']:checked").val();
+
+                if (answered == undefined) answered = "";
+
                 $.ajax({
                     type: "POST",
                     url: "assets/data.php",
@@ -245,8 +303,20 @@ if (!isset($_SESSION['exam_id'])) {
                         'exam_title': exam_title,
                         'question': question,
                         'answered': answered,
+                        'review_status': 'false', // Reset review status when saved
                     },
-                    success: function(response) {}
+                    success: function(response) {
+                        if (action !== 'next') {
+                            paginationData(qton_no);
+                            // Visual feedback for non-navigation saves
+                            var $checkedLabel = $("." + qton_no + " input[name='answer']:checked").next('label');
+                            var originalColor = $checkedLabel.css('color');
+                            $checkedLabel.css('color', '#00b74a').css('font-weight', 'bold');
+                            setTimeout(function() {
+                                $checkedLabel.css('color', originalColor).css('font-weight', 'normal');
+                            }, 1000);
+                        }
+                    }
                 });
             }
 
@@ -270,12 +340,12 @@ if (!isset($_SESSION['exam_id'])) {
                     data: {
                         'get_paginate': true,
                         'exam_title': "<?php echo $res1['exam_title'] ?>",
+                        'std_id': "<?php echo $_SESSION['std_id'] ?>",
                     },
                     success: function(response) {
                         $('.qs-no-paginate').html("");
-                        num_Class();
                         $.each(response, function(key, value) {
-                            var numBtnClass = "num-NotSelected";
+                            var numBtnClass = "num-" + value.status;
                             var last_page = <?php echo $total_pages ?>;
                             if (page == last_page) {
                                 $("#saveNnext").addClass("d-none");
@@ -284,11 +354,12 @@ if (!isset($_SESSION['exam_id'])) {
                                 $("#submitPaper").addClass("d-none");
                                 $("#saveNnext").removeClass("d-none");
                             }
-                            if (page == value)
-                                numBtnClass = "num-Selected";
+                            if (page == value.page)
+                                numBtnClass += " num-Selected";
                             $('.qs-no-paginate').append(
-                                '<button class="numID ' + numBtnClass + '" id="' + value + '">' + value + '</button>');
+                                '<button class="numID ' + numBtnClass + '" id="' + value.page + '">' + value.page + '</button>');
                         });
+                        num_Class();
                     }
                 });
             }
