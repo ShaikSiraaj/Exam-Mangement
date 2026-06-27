@@ -114,7 +114,7 @@ INSERT INTO `add_question` (`question_id`, `exam_title`, `course`, `question`, `
 (2, 'Exam of Software Engineering', 'Software Engineering', 'Attributes of good software is -', 'Development', 'Maintainability & functionality', 'Functionality', 'Maintainability', 'Maintainability & functionality'),
 (3, 'Exam of Software Engineering', 'Software Engineering', 'When can white-box testing be started?', 'After SRS creation', 'After installation', 'After programming', 'After designing', 'After programming'),
 (4, 'Exam of Software Engineering', 'Software Engineering', 'A process view in software engineering would consider which of the following', 'Product performance', 'Staffing', 'Functionality', 'Reliability', 'Staffing'),
-(5, 'Exam of Software Engineering', 'Software Engineering', 'What does SDLC stands for?', 'System Design Life Cycle', 'Software Design Life Cycle', 'Software Development Life Cycle', 'System Development Life cycle', 'Software Development Life Cycle');
+(5, 'Exam of Software Engineering', 'Software Engineering', 'What does SDLC stands for?', 'System Design Life Cycle', 'Software Development Life Cycle', 'Software Development Life Cycle', 'System Development Life cycle', 'Software Development Life Cycle');
 
 -- --------------------------------------------------------
 
@@ -216,6 +216,18 @@ CREATE TABLE `std_exam_status` (
   `attendence_status` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `faculty`
+--
+
+CREATE TABLE `faculty` (
+  `id` int(100) NOT NULL,
+  `name` varchar(100) NOT NULL,
+  `email` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
 --
 -- Indexes for dumped tables
 --
@@ -275,6 +287,13 @@ ALTER TABLE `std_exam_status`
   ADD PRIMARY KEY (`status_id`);
 
 --
+-- Indexes for table `faculty`
+--
+ALTER TABLE `faculty`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `email` (`email`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -331,6 +350,12 @@ ALTER TABLE `exam_answers`
 --
 ALTER TABLE `std_exam_status`
   MODIFY `status_id` int(100) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `faculty`
+--
+ALTER TABLE `faculty`
+  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
