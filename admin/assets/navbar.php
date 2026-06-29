@@ -101,19 +101,6 @@ $res2 = mysqli_fetch_array($result1);
             </div>
         </li>
 
-        <!--  Faculty -->
-        <li id="faculty" class="nav-item">
-            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseFaculty" aria-expanded="true" aria-controls="collapseFaculty">
-                <i class="fas fa-chalkboard-teacher"></i>
-                <span>Faculty</span>
-            </a>
-            <div id="collapseFaculty" class="collapse" aria-labelledby="headingFaculty" data-parent="#accordionSidebar">
-                <div class="bg-white py-2 collapse-inner rounded">
-                    <a class="collapse-item" href="import_faculty.php">Import Faculty</a>
-                </div>
-            </div>
-        </li>
-
         <!--  Admin  -->
         <li id="admin_list" class="nav-item">
             <a class="nav-link" href="admins.php">
