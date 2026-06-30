@@ -129,7 +129,7 @@ include "assets/navbar.php"
                 </div>
 
                 <div style="text-align: center; padding-top:10px">
-                    <input style="background-color: #2a498b; border-color:#2e2cc9; height: 38px; width: 100px" class="btn btn-primary" type="submit" name="add_exam_btn" id="add_exam_btn" value="Submit">
+                    <input class="btn btn-primary px-4 py-2" type="submit" name="add_exam_btn" id="add_exam_btn" value="Submit">
                 </div>
             </form>
         </div>

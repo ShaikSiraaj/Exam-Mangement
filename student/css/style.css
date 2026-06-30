@@ -71,12 +71,13 @@ tbody tr td .fa-edit {
 }
 
 .box-container {
-    border-radius: 10px;
-    height: 560px;
+    border-radius: 0.35rem;
+    height: auto;
     background-color: white;
     color: black;
     padding-bottom: 20px;
     box-shadow: 0 0.15rem 1.75rem 0 rgba(58, 59, 69, 0.15) !important;
+    border: none;
 }
 
 input[type="date"]::before,
@@ -578,48 +579,50 @@ input[type="number"]::-webkit-outer-spin-button {
 }
 
 .numID {
-    height: 31px;
-    width: 31px;
-    font-family: monospace;
+    height: 35px;
+    width: 35px;
+    font-family: "Nunito", sans-serif;
     font-size: 14px;
-    border-radius: 5px;
+    font-weight: 700;
+    border-radius: 50%;
+    transition: all 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin: 5px !important;
+    border: 2px solid transparent;
 }
 
 .num-Attempted {
     color: #fff !important;
-    background-color: #00b74a !important;
-    border: 1px solid #00b74a !important;
+    background-color: #1cc88a !important;
+    border-color: #1cc88a !important;
 }
 
 .num-NotAttempted {
-    color: #000 !important;
-    background-color: #f0f0f0 !important;
-    border: 1px solid #5f5f5f81 !important;
-}
-
-.num-NotSelected {
-    color: #000;
-    background-color: #f0f0f0;
-    border: 1px solid #5f5f5f81;
+    color: #858796 !important;
+    background-color: #f8f9fc !important;
+    border-color: #dddfeb !important;
 }
 
 .num-Selected {
     color: #fff !important;
-    background-color: #0796e9 !important;
-    border: 1px solid #046eac !important;
-    box-shadow: 0 0 5px rgba(0,0,0,0.5);
+    background-color: #4e73df !important;
+    border-color: #2e59d9 !important;
+    box-shadow: 0 0.15rem 1.75rem 0 rgba(78, 115, 223, 0.4);
+    transform: scale(1.1);
 }
 
 .num-Review {
     color: #fff !important;
-    background-color: #f0ad4e !important;
-    border: 1px solid #eea236 !important;
+    background-color: #f6c23e !important;
+    border-color: #f6c23e !important;
 }
 
 .num-NotAnswered {
     color: #fff !important;
-    background-color: #dd2a1a !important;
-    border: 1px solid #dd2a1a !important;
+    background-color: #e74a3b !important;
+    border-color: #e74a3b !important;
 }
 
 .pagination-part .qs-no-paginate .numID {
@@ -645,15 +648,18 @@ input[type="number"]::-webkit-outer-spin-button {
 }
 
 .headline {
-    padding: 6px 6px 6px;
+    padding: 10px 15px;
     cursor: default;
     color: white;
-    background-color: rgb(11, 11, 187);
+    background-color: #4e73df;
     text-align: center;
-    font-weight: 600;
-    border-radius: 15px;
-    box-shadow: 5px 5px 5px #1268f170;
+    font-weight: 700;
+    border-radius: 0.5rem;
+    box-shadow: 0 0.15rem 1.75rem 0 rgba(58, 59, 69, 0.15);
     margin-bottom: 20px;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    letter-spacing: 0.05rem;
 }
 
 #footer {
@@ -663,9 +669,10 @@ input[type="number"]::-webkit-outer-spin-button {
     position: absolute;
     bottom: 0;
     width: 100%;
-    height: 60px;
-    border-top: 2px solid lightblue;
-    background-color: rgba(145, 145, 255, 0.295);
+    height: 70px;
+    border-top: 1px solid #eaecf4;
+    background-color: #f8f9fc;
+    z-index: 10;
 }
 
 /* .btn.btn-review {
@@ -709,20 +716,17 @@ input[type="number"]::-webkit-outer-spin-button {
 
 /* -------------- home.php -------------- */
 
-.box-container.exams-view {
-    width: 340px;
-    height: 310px;
-    float: left;
-    margin-right: 30px;
-    margin-bottom: 30px;
-    padding: 0;
+.exams-view-card {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-.exams-view .card-header {
-    background-color: #27a127;
-    color: #fff;
-    font-weight: 600;
-    text-align: center;
+.exams-view-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0.5rem 2rem 0 rgba(58, 59, 69, 0.2) !important;
+}
+
+.exams-view-card .card-header {
+    background-color: #4e73df !important;
 }
 
 .exams-view .card-containts {

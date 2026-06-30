@@ -14,55 +14,62 @@ include "assets/header.php"
 
 </head>
 
-<body>
+<body class="bg-light">
 
-    <section>
-        <div class="container-fluid">
-            <div class="container-log">
-                <div class="row">
-                    <div class="col" style="margin-top: 15px">
-                        <div class="log-form-container" style="margin-top:0; margin-bottom:0">
+    <section class="min-vh-100 d-flex align-items-center py-5">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-10 col-lg-8">
+                    <div class="card border-0 shadow-lg rounded-3 overflow-hidden">
+                        <div class="card-body p-0">
+                            <div class="row align-items-center g-0">
+                                <div class="col-md-6 p-5">
+                                    <h3 class="fw-bold mb-4">Admin Registration</h3>
                             <form id="reg_form" action="" enctype="multipart/form-data" method="POST">
 
-                                <div class="profile-pic-reg">
+                                <div class="profile-pic-reg position-relative mb-5 mx-auto" style="width: 120px;">
                                     <img src="img/pfp.png" id="photo">
                                     <div class="round">
                                         <input type="file" id="file" name="avatar" accept=".jpg, .jpeg, .png">
                                         <label for="file" id="uploadBtn"><i class="fa fa-camera" style="color: #fff;"></i></label>
                                     </div>
                                 </div>
-                                <div style="padding-top: 65px ;padding-bottom: 5px;">
-                                    <label style="font-size:12px; font-weight:600">Full Name</label>
+                                <div class="mb-3">
+                                    <label class="form-label small fw-bold">Full Name</label>
                                     <input type="text" class="form-control" name="fullname" placeholder="Enter Full Name" required value="">
                                 </div>
-                                <div style="padding-bottom: 5px;">
-                                    <label style="font-size:12px; font-weight:600">Contact No.</label>
+                                <div class="mb-3">
+                                    <label class="form-label small fw-bold">Contact No.</label>
                                     <input type="number" class="form-control" name="contact" placeholder="Enter Contact No" required value="">
                                 </div>
-                                <div style="padding-bottom: 5px;">
-                                    <label style="font-size:12px; font-weight:600">Email ID</label>
+                                <div class="mb-3">
+                                    <label class="form-label small fw-bold">Email ID</label>
                                     <input type="email" class="form-control" name="emailid" placeholder="Enter Email ID" required value="">
                                 </div>
-                                <div style="padding-bottom: 5px;">
-                                    <label style="font-size:12px; font-weight:600">Password</label>
+                                <div class="mb-3">
+                                    <label class="form-label small fw-bold">Password</label>
                                     <input type="password" class="form-control" name="password" placeholder="Enter Password" required value="">
                                 </div>
-                                <div style="padding-bottom: 20px;">
-                                    <label style="font-size:12px; font-weight:600">Special Token</label>
+                                <div class="mb-4">
+                                    <label class="form-label small fw-bold">Special Token</label>
                                     <input type="text" class="form-control" name="specialtoken" placeholder="Enter Special Token" required value="">
                                 </div>
-                                <div class="text-center text-lg-start pt-2">
-                                    <button type="button submit" class=" btn btn-primary" name="reg_btn" id="reg_btn">Register</button>
+                                <div class="text-center pt-2">
+                                    <button type="submit" class="btn btn-primary w-100" name="reg_btn" id="reg_btn">Register Account</button>
+                                    <p class="small fw-bold mt-3 mb-0">Already have an account? <a href="../login.php" class="text-danger text-decoration-none">Login</a></p>
                                 </div>
 
                             </form>
+                                </div>
+                                <div class="col-md-6 d-none d-md-block text-center p-4">
+                                    <img class="img-fluid" src="img/27799766.png" alt="Register">
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                    <div class="col text-center" style="padding-top: 70px">
-                        <img class="log-img" src="img/27799766.png">
                     </div>
                 </div>
             </div>
+        </div>
     </section>
 
     <?php

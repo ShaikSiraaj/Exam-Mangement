@@ -14,7 +14,7 @@ session_start();
 
     <!-- stylesheet -->
     <link href="admin/css/style.css?version=1" rel="stylesheet" type="text/css">
-    <link href="admin/css/bootstrap.css?version=1" rel="stylesheet" type="text/css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="admin/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
     <!-- Fonts -->
@@ -22,34 +22,36 @@ session_start();
     
     <!-- Javascript -->
     <script src="admin/js/jquery.min.js"></script>
-    <script src="admin/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 
 </head>
 
-<body>
+<body class="bg-light">
 
-    <section>
-        <div class="container-fluid">
-            <div class="container-log">
+    <section class="vh-100 d-flex align-items-center">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-10 col-lg-8">
+                    <div class="card border-0 shadow-lg rounded-3 overflow-hidden">
+                        <div class="card-body p-0">
+                            <!-- Pills navs -->
+                            <div class="login-pill mt-4 px-4">
+                                <ul class="nav nav-pills nav-fill bg-light p-1 rounded-pill" id="ex1" role="tablist">
+                                    <li class="nav-item">
+                                        <a class="nav-link active rounded-pill" id="tab-student" role="tab" aria-selected="true">Student</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link rounded-pill" id="tab-admin" role="tab" aria-selected="false">Admin</a>
+                                    </li>
+                                </ul>
+                            </div>
 
-                <!-- Pills navs -->
-                <div class="login-pill mb-4">
-                    <ul class="nav nav-pills nav-justified" id="ex1" role="tablist">
-                        <li class="nav-item">
-                            <a style="width: 15rem" class="nav-link active" id="tab-student" role="tab" aria-selected="true">Student</a>
-                        </li>
-                        <li class="nav-item">
-                            <a style="width: 15rem" class="nav-link" id="tab-admin" role="tab" aria-selected="false">Admin</a>
-                        </li>
-                    </ul>
-                </div>
-
-                <div class="std_login row">
-                    <div class="col text-center">
-                        <img class="log-img" src="admin/img/draw2.png">
-                    </div>
-                    <div class="col">
-                        <div class="log-form-container">
+                            <div class="std_login row align-items-center g-0">
+                                <div class="col-md-6 d-none d-md-block text-center p-4">
+                                    <img class="img-fluid" src="admin/img/draw2.png" alt="Student Login">
+                                </div>
+                                <div class="col-md-6 p-5">
+                                    <h3 class="fw-bold mb-4">Student Login</h3>
                             <form id="std_login_form" action="" method="POST">
                                 <?php
                                 $cookieEmail_std = "";
@@ -81,20 +83,19 @@ session_start();
                                 </div>
 
                                 <div class="text-center text-lg-start mt-4 pt-2">
-                                    <input class="btn btn-primary" type="submit" name="std_login_btn" id="std_login_btn" value="Login">
-                                    <p style='font-size: .875em;' class='fw-700 mt-2 pt-1 mb-0'>
-                                        <a style="color: #f93154;">Can't Login?</a>
-                                        Ask to add you First!
+                                    <input class="btn btn-primary w-100" type="submit" name="std_login_btn" id="std_login_btn" value="Login">
+                                    <p style='font-size: .875em;' class='fw-700 mt-3 pt-1 mb-0'>
+                                        <span class="text-muted">Can't Login?</span>
+                                        <a href="#" class="text-danger text-decoration-none">Contact Admin</a>
                                     </p>
                                 </div>
                             </form>
-                        </div>
-                    </div>
-                </div>
+                                </div>
+                            </div>
 
-                <div class="adm_login row" style="display: none;">
-                    <div class="col">
-                        <div class="log-form-container">
+                            <div class="adm_login row align-items-center g-0" style="display: none;">
+                                <div class="col-md-6 p-5">
+                                    <h3 class="fw-bold mb-4">Admin Login</h3>
                             <form id="adm_login_form" action="" method="POST">
                                 <?php
                                 $cookieEmail_adm = "";
@@ -127,20 +128,21 @@ session_start();
                                 </div>
 
                                 <div class="text-center text-lg-start mt-4 pt-2">
-                                    <input class="btn btn-primary" type="submit" name="adm_login_btn" id="adm_login_btn" value="Login">
-                                    <p style='font-size: .875em;' class='fw-700 mt-2 pt-1 mb-0'>
+                                    <input class="btn btn-primary w-100" type="submit" name="adm_login_btn" id="adm_login_btn" value="Login">
+                                    <p style='font-size: .875em;' class='fw-700 mt-3 pt-1 mb-0'>
                                         Don't have an account?
-                                        <a href='admin/admin_reg.php' class='link-danger'>Register</a>
+                                        <a href='admin/admin_reg.php' class='text-danger text-decoration-none'>Register</a>
                                     </p>
                                 </div>
                             </form>
+                                </div>
+                                <div class="col-md-6 d-none d-md-block text-center p-4">
+                                    <img class="img-fluid" src="student/img/27799766.png" alt="Admin Login">
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <div class="col text-center mt-4">
-                        <img class="log-img" src="student/img/27799766.png">
-                    </div>
                 </div>
-
             </div>
         </div>
     </section>

@@ -321,13 +321,34 @@ input[type="time"]:in-range::-webkit-datetime-edit-text {
 }
 
 .box-container {
-    border-radius: 10px;
-    height: 540px;
+    border-radius: 0.35rem;
+    height: auto;
     background-color: white;
     color: black;
     /* padding-bottom: 20px; */
     margin-bottom: 20px;
     box-shadow: 0 0.15rem 1.75rem 0 rgba(58, 59, 69, 0.15) !important;
+    border: none;
+}
+
+.border-left-primary {
+    border-left: 0.25rem solid #4e73df !important;
+}
+
+.border-left-success {
+    border-left: 0.25rem solid #1cc88a !important;
+}
+
+.border-left-info {
+    border-left: 0.25rem solid #36b9cc !important;
+}
+
+.border-left-warning {
+    border-left: 0.25rem solid #f6c23e !important;
+}
+
+.border-left-danger {
+    border-left: 0.25rem solid #e74a3b !important;
 }
 
 /* --------- manage_exam --------- */
@@ -588,6 +609,17 @@ input[type="number"]::-webkit-outer-spin-button {
     cursor: pointer;
 }
 
+.login-pill .nav-pills .nav-link {
+    color: #4e73df;
+    font-weight: 700;
+    transition: all 0.2s ease;
+}
+
+.login-pill .nav-pills .nav-link.active {
+    background-color: #4e73df;
+    color: #fff;
+}
+
 .log-form-container {
     margin-top: 50px;
     margin-bottom: 40px;
@@ -602,10 +634,11 @@ input[type="number"]::-webkit-outer-spin-button {
 
 #adm_login_btn,
 #std_login_btn {
-    background-color: #1266f1;
+    background-color: #4e73df;
     padding-left: 25px;
     padding-right: 25px;
     font-size: 18px;
+    border: none;
 }
 
 #std_login_form,
@@ -658,17 +691,15 @@ input[type="number"]::-webkit-outer-spin-button {
 .profile-pic-reg {
     height: 120px;
     width: 120px;
-    position: absolute;
-    left: 48%;
-    transform: translate(-50%, -50%);
     border-radius: 50%;
 }
 
 .profile-pic-reg img {
-    height: 130px;
-    width: 130px;
+    height: 120px;
+    width: 120px;
     border-radius: 50%;
-    border: 8px solid #dcdcdc;
+    border: 5px solid #eaecf4;
+    object-fit: cover;
 }
 
 .profile-pic-reg .round {

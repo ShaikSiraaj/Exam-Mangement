@@ -19,7 +19,7 @@ $res2 = mysqli_fetch_array($result1);
 
 <!--  SideBar  -->
 <div id="wrapper">
-    <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion toggled" id="accordionSidebar">
+    <ul class="navbar-nav bg-primary sidebar sidebar-dark accordion toggled" id="accordionSidebar">
 
         <!--  Sidebar  -->
         <a class="sidebar-brand d-flex align-items-center justify-content-center" href="dashboard.php">

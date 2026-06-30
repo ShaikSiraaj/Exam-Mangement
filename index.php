@@ -23,28 +23,30 @@ include "connection.php";
 
 <body id="page-top">
     <!-- Navigation-->
-    <nav class="navbar navbar-expand-lg navbar-light fixed-top py-3" id="mainNav">
-        <div class="container mx-4 w-100">
-            <section class="navbar-brand">Online Exam Management System</section>
-            <ul class="navbar-nav my-2 mx-3">
-                <li class="nav-item"><a class="nav-link" href="login.php">Login</a></li>
-                <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
-            </ul>
+    <nav class="navbar navbar-expand-lg navbar-light sticky-top py-3" id="mainNav">
+        <div class="container px-4">
+            <a class="navbar-brand" href="#page-top">Online Exam Management System</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ms-auto my-2 my-lg-0">
+                    <li class="nav-item"><a class="nav-link" href="login.php">Login</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+                </ul>
+            </div>
         </div>
     </nav>
 
     <!-- Masthead-->
     <header class="masthead">
-        <div class="container mx-4 h-100">
-            <div class="w-100 row h-100 align-items-center justify-content-center text-center">
+        <div class="container px-4 px-lg-5 h-100">
+            <div class="row gx-4 gx-lg-5 h-100 align-items-center justify-content-center text-center">
                 <div class="col-lg-8 align-self-end">
-                    <h1 class="text-white font-weight-bold">Test Your Knowledge and Skills</h1>
+                    <h1 class="text-white font-weight-bold">Elevate Your Academic Performance</h1>
                     <hr class="divider" />
                 </div>
                 <div class="col-lg-8 align-self-baseline">
-                    <p class="text-white-75">Utilize your skills with Objective and Descriptive Tests!</p>
-                    <p class="text-white-75 mb-5"> Make youself ready for any Exams.</p>
-                    <a class="btn btn-primary btn-xl" href="login.php">Get Started</a>
+                    <p class="text-white-75 mb-5">A comprehensive platform for secure, efficient, and insightful examinations. Test your boundaries and achieve your goals with our advanced testing environment.</p>
+                    <a class="btn btn-primary btn-xl" href="login.php">Get Started Now</a>
                 </div>
             </div>
         </div>
@@ -82,8 +84,12 @@ include "connection.php";
                     navbarCollapsible.classList.add("navbar-shrink");
                 }
             };
+            // Shrink the navbar
             navbarShrink();
+            // Shrink the navbar when page is scrolled
             document.addEventListener("scroll", navbarShrink);
+
+            // Activate Bootstrap scrollspy on the main nav element
             const mainNav = document.body.querySelector("#mainNav");
             if (mainNav) {
                 new bootstrap.ScrollSpy(document.body, {
@@ -91,6 +97,19 @@ include "connection.php";
                     offset: 74,
                 });
             }
+
+            // Collapse responsive navbar when toggler is visible
+            const navbarToggler = document.body.querySelector('.navbar-toggler');
+            const responsiveNavItems = [].slice.call(
+                document.querySelectorAll('#navbarResponsive .nav-link')
+            );
+            responsiveNavItems.map(function (responsiveNavItem) {
+                responsiveNavItem.addEventListener('click', () => {
+                    if (window.getComputedStyle(navbarToggler).display !== 'none') {
+                        navbarToggler.click();
+                    }
+                });
+            });
         });
     </script>
 
