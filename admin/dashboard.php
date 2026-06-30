@@ -25,10 +25,10 @@ include "assets/navbar.php"
         <!-- ---------------------- Dashboard Cards -------------------- -->
 
         <h3 style="margin-top: 28px; margin-bottom: 28px;">Dashboard</h3>
-        <div class="row row-cols-5">
+        <div class="row row-cols-1 row-cols-md-2 row-cols-xl-5">
 
             <div class="col mb-4">
-                <div class="card border-left-primary shadow h-100 py-2">
+                <div class="card border-0 border-left-primary shadow-sm h-100 py-2">
                     <div class="card-body">
                         <div class="row no-gutters align-items-center">
                             <div class="col mr-2">
@@ -55,7 +55,7 @@ include "assets/navbar.php"
             </div>
 
             <div class="col mb-4">
-                <div class="card border-left-primary shadow h-100 py-2">
+                <div class="card border-0 border-left-success shadow-sm h-100 py-2">
                     <div class="card-body">
                         <div class="row no-gutters align-items-center">
                             <div class="col mr-2">
@@ -82,7 +82,7 @@ include "assets/navbar.php"
             </div>
 
             <div class="col mb-4">
-                <div class="card border-left-primary shadow h-100 py-2">
+                <div class="card border-0 border-left-info shadow-sm h-100 py-2">
                     <div class="card-body">
                         <div class="row no-gutters align-items-center">
                             <div class="col mr-2">
@@ -109,7 +109,7 @@ include "assets/navbar.php"
             </div>
 
             <div class="col mb-4">
-                <div class="card border-left-primary shadow h-100 py-2">
+                <div class="card border-0 border-left-warning shadow-sm h-100 py-2">
                     <div class="card-body">
                         <div class="row no-gutters align-items-center">
                             <div class="col mr-2">
@@ -136,11 +136,11 @@ include "assets/navbar.php"
             </div>
 
             <div class="col mb-4">
-                <div class="card border-left-primary shadow h-100 py-2">
+                <div class="card border-0 border-left-danger shadow-sm h-100 py-2">
                     <div class="card-body">
                         <div class="row no-gutters align-items-center">
                             <div class="col mr-2">
-                                <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
+                                <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">
                                     Total Classes</div>
 
                                 <?php

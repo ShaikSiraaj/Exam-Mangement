@@ -37,8 +37,8 @@ if (!isset($_SESSION['exam_id'])) {
 
             include "assets/TimeCircle.php";
             ?>
-            <nav class="navbar navbar-dark navbar-expand bg-blue qs-topbar shadow">
-                <p class="navbar-brand"><span style="font-weight: 600;">Test Name - </span><?php echo $res1['exam_title'] ?></p>
+            <nav class="navbar navbar-dark navbar-expand bg-dark shadow-sm py-2 px-4">
+                <span class="navbar-brand mb-0 h1"><i class="fas fa-edit me-2"></i><?php echo $res1['exam_title'] ?></span>
                 <?php
                 $sql2 = "SELECT * FROM `add_student` WHERE `std_id` = '{$_SESSION["std_id"]}'";
                 $result2 = mysqli_query($db, $sql2);
@@ -93,13 +93,15 @@ if (!isset($_SESSION['exam_id'])) {
                         ?>
 
                     </div>
-                    <div id="footer">
-                        <span class="pr-3"><button type="button" class="btn btn-primary" id="previous"><i class="fa fa-angle-left"></i> Previous</button></span>
-                        <span class="pr-2">
-                            <button type="button" class="btn btn-warning" id="markReview">Mark for Review</button>
-                            <button type="button" class="btn btn-primary" id="saveNnext">Save & Next <i class="fa fa-angle-right"></i></button>
-                            <button type="submit" class="btn btn-danger d-none" id="submitPaper">Submit Exam</button>
-                        </span>
+                    <div id="footer" class="bg-light border-top shadow-sm px-4">
+                        <div class="d-flex justify-content-between w-100 align-items-center">
+                            <button type="button" class="btn btn-outline-primary px-4 rounded-pill fw-bold" id="previous"><i class="fa fa-angle-left me-2"></i>Previous</button>
+                            <div>
+                                <button type="button" class="btn btn-outline-warning px-4 rounded-pill fw-bold me-2" id="markReview"><i class="far fa-bookmark me-2"></i>Review Later</button>
+                                <button type="button" class="btn btn-success px-4 rounded-pill fw-bold" id="saveNnext">Save & Next<i class="fa fa-angle-right ms-2"></i></button>
+                                <button type="submit" class="btn btn-danger px-4 rounded-pill fw-bold d-none" id="submitPaper">Submit Examination</button>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
@@ -116,14 +118,16 @@ if (!isset($_SESSION['exam_id'])) {
                     </div>
 
                     <!-- ######## Student's Details ######## -->
-                    <div id="student_details">
-                        <div class="headline">Student Details</div>
-                        <div id="std_img">
-                            <img src="<?php echo empty($res2['image']) ? "img/pfp.png" : $res2['image']; ?>">
-                        </div>
-                        <div id="std_profile">
-                            <p class="pb-1 fw-700"><?php echo $res2['std_name'] ?></p>
-                            <p style="font-size: 15px;"><?php echo $res2['email'] ?></p>
+                    <div id="student_details" class="p-3">
+                        <div class="headline mb-4">Examinee Information</div>
+                        <div class="d-flex align-items-center bg-light p-3 rounded-3 shadow-sm">
+                            <div id="std_img" class="flex-shrink-0">
+                                <img src="<?php echo empty($res2['image']) ? "img/pfp.png" : $res2['image']; ?>" class="rounded-circle" style="width: 60px; height: 60px; object-fit: cover;">
+                            </div>
+                            <div id="std_profile" class="ms-3 overflow-hidden">
+                                <p class="mb-0 fw-bold text-dark truncate"><?php echo $res2['std_name'] ?></p>
+                                <p class="mb-0 text-muted small truncate"><?php echo $res2['email'] ?></p>
+                            </div>
                         </div>
                     </div>
                 </div>
