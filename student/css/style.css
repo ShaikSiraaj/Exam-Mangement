@@ -50,9 +50,13 @@ tbody tr td .fa-edit {
 .card-header {
     font-size: 18px;
     height: 55px;
-    border-top-left-radius: 10px !important;
-    border-top-right-radius: 10px !important;
+    border-top-left-radius: 12px !important;
+    border-top-right-radius: 12px !important;
     padding-top: 15px !important;
+    border-bottom: none;
+    background-color: rgba(67, 97, 238, 0.05);
+    color: #4361ee;
+    font-weight: 600;
 }
 
 .toggle-password-eye {
@@ -71,12 +75,13 @@ tbody tr td .fa-edit {
 }
 
 .box-container {
-    border-radius: 10px;
+    border-radius: 16px;
     height: 560px;
     background-color: white;
     color: black;
     padding-bottom: 20px;
-    box-shadow: 0 0.15rem 1.75rem 0 rgba(58, 59, 69, 0.15) !important;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08) !important;
+    border: none;
 }
 
 input[type="date"]::before,
@@ -112,11 +117,12 @@ input[type="time"]:in-range::-webkit-datetime-edit-text {
 /* --------- exam.php --------- */
 
 .table-box {
-    border-radius: 10px;
+    border-radius: 16px;
     height: auto;
     background-color: white;
     color: black !important;
-    box-shadow: 0 0.15rem 1.75rem 0 rgba(58, 59, 69, 0.15) !important;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08) !important;
+    border: none;
 }
 
 .butn {
@@ -138,8 +144,8 @@ a.butn:hover {
 
 .butn-primary {
     color: #fff;
-    background-color: #1266f1;
-    border-color: #1266f1;
+    background-color: #4361ee;
+    border-color: #4361ee;
 }
 
 .butn-secondary {
@@ -709,20 +715,14 @@ input[type="number"]::-webkit-outer-spin-button {
 
 /* -------------- home.php -------------- */
 
-.box-container.exams-view {
-    width: 340px;
-    height: 310px;
-    float: left;
-    margin-right: 30px;
-    margin-bottom: 30px;
-    padding: 0;
-}
 
 .exams-view .card-header {
-    background-color: #27a127;
+    background-color: #4361ee;
     color: #fff;
     font-weight: 600;
     text-align: center;
+    border-top-left-radius: 16px !important;
+    border-top-right-radius: 16px !important;
 }
 
 .exams-view .card-containts {

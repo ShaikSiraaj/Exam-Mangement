@@ -67,9 +67,13 @@ tbody tr td .fa-trash {
 .card-header {
     font-size: 18px;
     height: 55px;
-    border-top-left-radius: 10px !important;
-    border-top-right-radius: 10px !important;
+    border-top-left-radius: 12px !important;
+    border-top-right-radius: 12px !important;
     padding-top: 15px !important;
+    border-bottom: none;
+    background-color: rgba(67, 97, 238, 0.05);
+    color: #4361ee;
+    font-weight: 600;
 }
 
 .toggle-password-eye {
@@ -123,6 +127,15 @@ input[type="time"]:in-range::-webkit-datetime-edit-text {
     color: rgba(71, 71, 71, 0.884);
     font-size: 26px;
     cursor: default;
+}
+
+#accordionSidebar .nav-item .nav-link {
+    padding: 1rem 1.5rem;
+    font-weight: 500;
+}
+
+#accordionSidebar .nav-item .nav-link i {
+    margin-right: 0.5rem;
 }
 
 /* ----------------- logout ----------------- */
@@ -321,23 +334,26 @@ input[type="time"]:in-range::-webkit-datetime-edit-text {
 }
 
 .box-container {
-    border-radius: 10px;
+    border-radius: 16px;
     height: 540px;
     background-color: white;
     color: black;
     /* padding-bottom: 20px; */
     margin-bottom: 20px;
-    box-shadow: 0 0.15rem 1.75rem 0 rgba(58, 59, 69, 0.15) !important;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08) !important;
+    border: none;
 }
 
 /* --------- manage_exam --------- */
 
 .table-box {
-    border-radius: 10px;
+    border-radius: 16px;
     height: auto;
     background-color: white;
     color: black !important;
-    box-shadow: 0 0.15rem 1.75rem 0 rgba(58, 59, 69, 0.15) !important;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08) !important;
+    border: none;
+    overflow: hidden;
 }
 
 tbody {

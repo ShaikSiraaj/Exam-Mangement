@@ -24,138 +24,128 @@ include "assets/navbar.php"
 
         <!-- ---------------------- Dashboard Cards -------------------- -->
 
-        <h3 style="margin-top: 28px; margin-bottom: 28px;">Dashboard</h3>
-        <div class="row row-cols-5">
+        <h3 class="fw-bold mb-4">System Overview</h3>
+        <div class="row row-cols-1 row-cols-md-3 row-cols-xl-5 g-4">
 
-            <div class="col mb-4">
-                <div class="card border-left-primary shadow h-100 py-2">
+            <div class="col">
+                <div class="card border-0 shadow-sm h-100 py-2" style="border-radius: 15px;">
                     <div class="card-body">
-                        <div class="row no-gutters align-items-center">
-                            <div class="col mr-2">
+                        <div class="row no-gutters align-items-center text-center text-xl-start">
+                            <div class="col-auto mx-auto mx-xl-0 mb-3 mb-xl-0">
+                                <div class="bg-primary bg-opacity-10 p-3 rounded-circle">
+                                    <i class="fas fa-award fa-2x text-primary"></i>
+                                </div>
+                            </div>
+                            <div class="col ms-xl-3">
                                 <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
                                     Result Published</div>
 
                                 <?php
                                 $dash_result_query = "SELECT * FROM `add_exam` WHERE `status`='Ended'";
                                 $dash_result_query_run = mysqli_query($db, $dash_result_query);
-                                if ($results = mysqli_num_rows($dash_result_query_run)) {
-                                    echo '<div class="h5 mb-0 font-weight-bold text-gray-800">' . $results . '</div>';
-                                } else {
-                                    echo '<div class="h5 mb-0 font-weight-bold text-gray-800">0</div>';
-                                }
+                                $results = mysqli_num_rows($dash_result_query_run);
+                                echo '<div class="h4 mb-0 font-weight-bold text-gray-800">' . ($results ?: 0) . '</div>';
                                 ?>
-
-                            </div>
-                            <div class="col-auto">
-                                <i class="fas fa-award fa-2x text-gray-300"></i>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <div class="col mb-4">
-                <div class="card border-left-primary shadow h-100 py-2">
+            <div class="col">
+                <div class="card border-0 shadow-sm h-100 py-2" style="border-radius: 15px;">
                     <div class="card-body">
-                        <div class="row no-gutters align-items-center">
-                            <div class="col mr-2">
+                        <div class="row no-gutters align-items-center text-center text-xl-start">
+                            <div class="col-auto mx-auto mx-xl-0 mb-3 mb-xl-0">
+                                <div class="bg-success bg-opacity-10 p-3 rounded-circle">
+                                    <i class="fas fa-chalkboard-teacher fa-2x text-success"></i>
+                                </div>
+                            </div>
+                            <div class="col ms-xl-3">
                                 <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                                    Total Exam</div>
+                                    Total Exams</div>
 
                                 <?php
                                 $dash_exam_query = "SELECT * FROM `add_exam`";
                                 $dash_exam_query_run = mysqli_query($db, $dash_exam_query);
-                                if ($exam_total = mysqli_num_rows($dash_exam_query_run)) {
-                                    echo '<div class="h5 mb-0 font-weight-bold text-gray-800">' . $exam_total . '</div>';
-                                } else {
-                                    echo '<div class="h5 mb-0 font-weight-bold text-gray-800">0</div>';
-                                }
+                                $exam_total = mysqli_num_rows($dash_exam_query_run);
+                                echo '<div class="h4 mb-0 font-weight-bold text-gray-800">' . ($exam_total ?: 0) . '</div>';
                                 ?>
-
-                            </div>
-                            <div class="col-auto">
-                                <i class="fas fa-chalkboard-teacher fa-2x text-gray-300"></i>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <div class="col mb-4">
-                <div class="card border-left-primary shadow h-100 py-2">
+            <div class="col">
+                <div class="card border-0 shadow-sm h-100 py-2" style="border-radius: 15px;">
                     <div class="card-body">
-                        <div class="row no-gutters align-items-center">
-                            <div class="col mr-2">
-                                <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Total Student
+                        <div class="row no-gutters align-items-center text-center text-xl-start">
+                            <div class="col-auto mx-auto mx-xl-0 mb-3 mb-xl-0">
+                                <div class="bg-info bg-opacity-10 p-3 rounded-circle">
+                                    <i class="fas fa-user-graduate fa-2x text-info"></i>
+                                </div>
+                            </div>
+                            <div class="col ms-xl-3">
+                                <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Total Students
                                 </div>
 
                                 <?php
                                 $dash_student_query = "SELECT * FROM `add_student`";
                                 $dash_student_query_run = mysqli_query($db, $dash_student_query);
-                                if ($student_total = mysqli_num_rows($dash_student_query_run)) {
-                                    echo '<div class="h5 mb-0 font-weight-bold text-gray-800">' . $student_total . '</div>';
-                                } else {
-                                    echo '<div class="h5 mb-0 font-weight-bold text-gray-800">0</div>';
-                                }
+                                $student_total = mysqli_num_rows($dash_student_query_run);
+                                echo '<div class="h4 mb-0 font-weight-bold text-gray-800">' . ($student_total ?: 0) . '</div>';
                                 ?>
-
-                            </div>
-                            <div class="col-auto">
-                                <i class="fas fa-user-graduate fa-2x text-gray-300"></i>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <div class="col mb-4">
-                <div class="card border-left-primary shadow h-100 py-2">
+            <div class="col">
+                <div class="card border-0 shadow-sm h-100 py-2" style="border-radius: 15px;">
                     <div class="card-body">
-                        <div class="row no-gutters align-items-center">
-                            <div class="col mr-2">
+                        <div class="row no-gutters align-items-center text-center text-xl-start">
+                            <div class="col-auto mx-auto mx-xl-0 mb-3 mb-xl-0">
+                                <div class="bg-warning bg-opacity-10 p-3 rounded-circle">
+                                    <i class="fas fa-book fa-2x text-warning"></i>
+                                </div>
+                            </div>
+                            <div class="col ms-xl-3">
                                 <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
-                                    Total Course</div>
+                                    Total Courses</div>
 
                                 <?php
                                 $dash_course_query = "SELECT * FROM `add_course`";
                                 $dash_course_query_run = mysqli_query($db, $dash_course_query);
-                                if ($course_total = mysqli_num_rows($dash_course_query_run)) {
-                                    echo '<div class="h5 mb-0 font-weight-bold text-gray-800">' . $course_total . '</div>';
-                                } else {
-                                    echo '<div class="h5 mb-0 font-weight-bold text-gray-800">0</div>';
-                                }
+                                $course_total = mysqli_num_rows($dash_course_query_run);
+                                echo '<div class="h4 mb-0 font-weight-bold text-gray-800">' . ($course_total ?: 0) . '</div>';
                                 ?>
-
-                            </div>
-                            <div class="col-auto">
-                                <i class="fas fa-book fa-2x text-gray-300"></i>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <div class="col mb-4">
-                <div class="card border-left-primary shadow h-100 py-2">
+            <div class="col">
+                <div class="card border-0 shadow-sm h-100 py-2" style="border-radius: 15px;">
                     <div class="card-body">
-                        <div class="row no-gutters align-items-center">
-                            <div class="col mr-2">
-                                <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
+                        <div class="row no-gutters align-items-center text-center text-xl-start">
+                            <div class="col-auto mx-auto mx-xl-0 mb-3 mb-xl-0">
+                                <div class="bg-danger bg-opacity-10 p-3 rounded-circle">
+                                    <i class="fas fa-users fa-2x text-danger"></i>
+                                </div>
+                            </div>
+                            <div class="col ms-xl-3">
+                                <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">
                                     Total Classes</div>
 
                                 <?php
                                 $dash_class_query = "SELECT * FROM `add_class`";
                                 $dash_class_query_run = mysqli_query($db, $dash_class_query);
-                                if ($class_total = mysqli_num_rows($dash_class_query_run)) {
-                                    echo '<div class="h5 mb-0 font-weight-bold text-gray-800">' . $class_total . '</div>';
-                                } else {
-                                    echo '<div class="h5 mb-0 font-weight-bold text-gray-800">0</div>';
-                                }
+                                $class_total = mysqli_num_rows($dash_class_query_run);
+                                echo '<div class="h4 mb-0 font-weight-bold text-gray-800">' . ($class_total ?: 0) . '</div>';
                                 ?>
-
-                            </div>
-                            <div class="col-auto">
-                                <i class="fas fa-users fa-2x text-gray-300"></i>
                             </div>
                         </div>
                     </div>

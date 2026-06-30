@@ -19,7 +19,7 @@ $res2 = mysqli_fetch_array($result1);
 
 <!--  SideBar  -->
 <div id="wrapper">
-    <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion toggled" id="accordionSidebar">
+    <ul class="navbar-nav bg-primary sidebar sidebar-dark accordion toggled" id="accordionSidebar">
 
         <!--  Sidebar  -->
         <a class="sidebar-brand d-flex align-items-center justify-content-center" href="dashboard.php">
@@ -120,12 +120,12 @@ $res2 = mysqli_fetch_array($result1);
     <script src="js/navbar.js"></script>
 
     <!--  Nav Bar  -->
-    <div id="content-wrapper" class="d-flex flex-column">
+    <div id="content-wrapper" class="d-flex flex-column bg-light">
         <div id="content">
 
-            <nav class="navbar navbar-expand navbar-light bg-white topbar static-top shadow">
+            <nav class="navbar navbar-expand navbar-light bg-white topbar static-top shadow-sm border-bottom">
 
-                <h2>Online Exam Management System</h2>
+                <h4 class="fw-bold text-primary mb-0 ms-3 d-none d-md-block">Online Exam Management System</h4>
 
                 <!--  Topbar Navbar  -->
                 <ul class="navbar-nav ml-auto">
