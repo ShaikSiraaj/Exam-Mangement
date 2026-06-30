@@ -21,18 +21,18 @@ $res2 = mysqli_fetch_array($result1);
 
     <!-- ------------------------------------------- Nav Bar -------------------------------------- -->
 
-    <div id="content-wrapper" class="d-flex flex-column">
+    <div id="content-wrapper" class="d-flex flex-column bg-light">
         <div id="content">
 
-            <nav class="navbar navbar-light navbar-expand bg-white topbar shadow">
-                <h4 class="navbar-brand" href="#">Exam Management System</h4>
+            <nav class="navbar navbar-light navbar-expand bg-white topbar shadow-sm border-bottom">
+                <h4 class="navbar-brand fw-bold text-primary mb-0 ms-3" href="#">Exam Management System</h4>
 
-                <ul class="navbar-nav">
+                <ul class="navbar-nav ms-4">
                     <li class="nav-item">
-                        <a id="home" class="nav-link" href="home.php">Home</a>
+                        <a id="home" class="nav-link fw-bold px-3" href="home.php">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a id="exam" class="nav-link" href="exam.php">Exam</a>
+                        <a id="exam" class="nav-link fw-bold px-3" href="exam.php">Exam</a>
                     </li>
                 </ul>
 

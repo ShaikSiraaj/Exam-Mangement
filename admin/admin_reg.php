@@ -14,14 +14,19 @@ include "assets/header.php"
 
 </head>
 
-<body>
+<body class="bg-light">
 
-    <section>
-        <div class="container-fluid">
-            <div class="container-log">
-                <div class="row">
-                    <div class="col" style="margin-top: 15px">
-                        <div class="log-form-container" style="margin-top:0; margin-bottom:0">
+    <section class="min-vh-100 d-flex align-items-center py-5">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-8 col-lg-6">
+                    <div class="card border-0 shadow-lg" style="border-radius: 20px;">
+                        <div class="card-body p-5">
+                            <div class="text-center mb-4">
+                                <h3 class="fw-bold text-primary">Admin Registration</h3>
+                                <p class="text-muted">Create your account to manage exams.</p>
+                            </div>
+                            <div class="log-form-container" style="margin-top:0; margin-bottom:0">
                             <form id="reg_form" action="" enctype="multipart/form-data" method="POST">
 
                                 <div class="profile-pic-reg">
@@ -51,18 +56,19 @@ include "assets/header.php"
                                     <label style="font-size:12px; font-weight:600">Special Token</label>
                                     <input type="text" class="form-control" name="specialtoken" placeholder="Enter Special Token" required value="">
                                 </div>
-                                <div class="text-center text-lg-start pt-2">
-                                    <button type="button submit" class=" btn btn-primary" name="reg_btn" id="reg_btn">Register</button>
+                                <div class="mt-4 pt-2">
+                                    <button type="submit" class="btn btn-primary w-100 py-3 fw-bold" name="reg_btn" id="reg_btn">Create Account</button>
+                                    <p style='font-size: .875em;' class='fw-600 mt-3 text-center mb-0 text-muted'>
+                                        Already have an account?
+                                        <a href='../login.php' class='text-primary'>Login Here</a>
+                                    </p>
                                 </div>
-
                             </form>
                         </div>
                     </div>
-                    <div class="col text-center" style="padding-top: 70px">
-                        <img class="log-img" src="img/27799766.png">
-                    </div>
                 </div>
             </div>
+        </div>
     </section>
 
     <?php

@@ -18,7 +18,9 @@ session_start();
     <link href="admin/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
     <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
     <!-- Javascript -->
     <script src="admin/js/jquery.min.js"></script>
@@ -26,30 +28,36 @@ session_start();
 
 </head>
 
-<body>
+<body class="bg-light">
 
-    <section>
-        <div class="container-fluid">
-            <div class="container-log">
+    <section class="vh-100 d-flex align-items-center">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-xl-10">
+                    <div class="card border-0 shadow-lg" style="border-radius: 20px; overflow: hidden;">
+                        <div class="row g-0">
+                            <div class="col-lg-6 d-none d-lg-flex align-items-center justify-content-center bg-primary p-5">
+                                <div class="text-center">
+                                    <img src="admin/img/draw2.png" class="img-fluid mb-4" style="max-height: 300px;" id="login_img">
+                                    <h3 class="text-white fw-bold">Welcome Back!</h3>
+                                    <p class="text-white-50">Please login to access your dashboard and manage your exams.</p>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 p-4 p-md-5 bg-white">
+                                <!-- Pills navs -->
+                                <div class="login-pill mb-5 d-flex justify-content-center">
+                                    <ul class="nav nav-pills p-1 bg-light rounded-pill" id="ex1" role="tablist" style="width: fit-content;">
+                                        <li class="nav-item">
+                                            <a class="nav-link active rounded-pill px-4" id="tab-student" role="tab" aria-selected="true" style="cursor:pointer">Student</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link rounded-pill px-4" id="tab-admin" role="tab" aria-selected="false" style="cursor:pointer">Admin</a>
+                                        </li>
+                                    </ul>
+                                </div>
 
-                <!-- Pills navs -->
-                <div class="login-pill mb-4">
-                    <ul class="nav nav-pills nav-justified" id="ex1" role="tablist">
-                        <li class="nav-item">
-                            <a style="width: 15rem" class="nav-link active" id="tab-student" role="tab" aria-selected="true">Student</a>
-                        </li>
-                        <li class="nav-item">
-                            <a style="width: 15rem" class="nav-link" id="tab-admin" role="tab" aria-selected="false">Admin</a>
-                        </li>
-                    </ul>
-                </div>
-
-                <div class="std_login row">
-                    <div class="col text-center">
-                        <img class="log-img" src="admin/img/draw2.png">
-                    </div>
-                    <div class="col">
-                        <div class="log-form-container">
+                                <div class="std_login">
+                                    <div class="log-form-container">
                             <form id="std_login_form" action="" method="POST">
                                 <?php
                                 $cookieEmail_std = "";
@@ -80,20 +88,17 @@ session_start();
                                     <!-- <a href="#!" class="forgot_pass">Forgot password?</a> -->
                                 </div>
 
-                                <div class="text-center text-lg-start mt-4 pt-2">
-                                    <input class="btn btn-primary" type="submit" name="std_login_btn" id="std_login_btn" value="Login">
-                                    <p style='font-size: .875em;' class='fw-700 mt-2 pt-1 mb-0'>
-                                        <a style="color: #f93154;">Can't Login?</a>
-                                        Ask to add you First!
+                                <div class="mt-4 pt-2">
+                                    <input class="btn btn-primary w-100 py-3 fw-bold" type="submit" name="std_login_btn" id="std_login_btn" value="Login as Student">
+                                    <p style='font-size: .875em;' class='fw-600 mt-3 text-center mb-0 text-muted'>
+                                        Can't Login? Ask your administrator to add you.
                                     </p>
                                 </div>
                             </form>
                         </div>
                     </div>
-                </div>
 
-                <div class="adm_login row" style="display: none;">
-                    <div class="col">
+                    <div class="adm_login" style="display: none;">
                         <div class="log-form-container">
                             <form id="adm_login_form" action="" method="POST">
                                 <?php
@@ -126,21 +131,17 @@ session_start();
                                     <!-- <a href="#!" class="forgot_pass">Forgot password?</a> -->
                                 </div>
 
-                                <div class="text-center text-lg-start mt-4 pt-2">
-                                    <input class="btn btn-primary" type="submit" name="adm_login_btn" id="adm_login_btn" value="Login">
-                                    <p style='font-size: .875em;' class='fw-700 mt-2 pt-1 mb-0'>
+                                <div class="mt-4 pt-2">
+                                    <input class="btn btn-primary w-100 py-3 fw-bold" type="submit" name="adm_login_btn" id="adm_login_btn" value="Login as Admin">
+                                    <p style='font-size: .875em;' class='fw-600 mt-3 text-center mb-0 text-muted'>
                                         Don't have an account?
-                                        <a href='admin/admin_reg.php' class='link-danger'>Register</a>
+                                        <a href='admin/admin_reg.php' class='text-danger'>Register Now</a>
                                     </p>
                                 </div>
                             </form>
                         </div>
                     </div>
-                    <div class="col text-center mt-4">
-                        <img class="log-img" src="student/img/27799766.png">
-                    </div>
                 </div>
-
             </div>
         </div>
     </section>
@@ -150,17 +151,19 @@ session_start();
     <script src="admin/js/sweetalert.js"></script>
     <script>
         $(document).on("click", "#tab-student", function() {
-            $('.container-log li a#tab-admin').removeClass('active')
+            $('.login-pill li a#tab-admin').removeClass('active')
             $(this).addClass('active');
             $('.adm_login').fadeOut(300).css("display", "none");
             $('.std_login').fadeIn(300).css("display", "");
+            $('#login_img').attr('src', 'admin/img/draw2.png');
         })
 
         $(document).on("click", "#tab-admin", function() {
-            $('.container-log li a#tab-student').removeClass('active')
+            $('.login-pill li a#tab-student').removeClass('active')
             $(this).addClass('active');
             $('.std_login').fadeOut(300).css("display", "none")
             $('.adm_login').fadeIn(300).css("display", "")
+            $('#login_img').attr('src', 'student/img/27799766.png');
         })
 
         $(document).ready(function() {

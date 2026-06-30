@@ -16,8 +16,9 @@ include "connection.php";
     <link href="style.css" rel="stylesheet" type="text/css">
 
     <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Merriweather+Sans:400,700" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic" rel="stylesheet" type="text/css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
 </head>
 
@@ -35,32 +36,36 @@ include "connection.php";
 
     <!-- Masthead-->
     <header class="masthead">
-        <div class="container mx-4 h-100">
-            <div class="w-100 row h-100 align-items-center justify-content-center text-center">
-                <div class="col-lg-8 align-self-end">
-                    <h1 class="text-white font-weight-bold">Test Your Knowledge and Skills</h1>
+        <div class="container px-4 h-100">
+            <div class="row h-100 align-items-center justify-content-center text-center">
+                <div class="col-lg-10 align-self-end">
+                    <h1 class="text-white font-weight-bold display-4 mb-4">Test Your Knowledge and Skills</h1>
                     <hr class="divider" />
                 </div>
                 <div class="col-lg-8 align-self-baseline">
-                    <p class="text-white-75">Utilize your skills with Objective and Descriptive Tests!</p>
-                    <p class="text-white-75 mb-5"> Make youself ready for any Exams.</p>
-                    <a class="btn btn-primary btn-xl" href="login.php">Get Started</a>
+                    <p class="text-white-75 fs-5 mb-5">Empowering students through secure, objective, and descriptive online assessments.</p>
+                    <a class="btn btn-primary btn-xl shadow-lg" href="login.php">Get Started Now</a>
                 </div>
             </div>
         </div>
     </header>
 
     <!-- About-->
-    <section class="page-section bg-primary" id="about">
+    <section class="page-section bg-light" id="about">
         <div class="container px-4">
             <div class="row justify-content-center">
-                <div class="col-lg-8 text-center">
-                    <h2 class="text-white mt-0">About This Project</h2>
-                    <hr class="divider divider-light" />
-                    <p class="text-white-90 mb-4">This is an in-house Project work undertaken in context of partial fulfillment in the Computer Science & Tech. Department for Exam. This Project ensures a safe and secure environment for students to test their Knowledge.</p>
-                    <div class="mb-4" id="follow">Follow Me on :
-                        <a id="github" href="https://github.com/itsNileshHere" target="_blank"><img src="student/img/GitHub.png"></a>
-                        <a id="telegram" href="https://t.me/DsntMtter" target="_blank"><img src="student/img/Telegram.png"></a>
+                <div class="col-lg-8">
+                    <div class="card border-0 shadow-sm p-5 text-center" style="border-radius: 20px;">
+                        <h2 class="mt-0 fw-bold" style="color: var(--primary);">About This Project</h2>
+                        <hr class="divider" />
+                        <p class="text-muted mb-5 fs-5">This advanced Exam Management System ensures a robust and secure environment for academic excellence. Designed with a focus on usability and security, it streamlines the examination process for both administrators and students.</p>
+                        <div class="mb-0" id="follow">
+                            <span class="fw-600 text-dark">Follow Developer:</span>
+                            <div class="mt-3">
+                                <a id="github" href="https://github.com/itsNileshHere" target="_blank" class="mx-2"><img src="student/img/GitHub.png" style="width: 45px; height: 45px;"></a>
+                                <a id="telegram" href="https://t.me/DsntMtter" target="_blank" class="mx-2"><img src="student/img/Telegram.png" style="width: 45px; height: 45px;"></a>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
