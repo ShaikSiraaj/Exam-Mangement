@@ -269,7 +269,7 @@ if (isset($_POST['show_results'])) {
                                 <th>Topic</th>
                                 <th style="padding-right: 10px;">Total Questions</th>
                                 <th>Attempted Questions</th>
-                                <th id="NA">Non Attempted Questinos</th>
+                                <th id="NA">Non Attempted Questions</th>
                                 <th>Correct Answers</th>
                                 <th>Incorrect Answers</th>
                                 <th>Max Marks</th>

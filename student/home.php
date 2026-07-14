@@ -86,13 +86,13 @@ include "assets/navbar.php";
                             if (mysqli_num_rows($query3) > 0) {
                                 if ($row3['attendence_status'] == "Ended") {
                             ?>
-                                    <button type="button" id="<?php echo $res1['exam_id'] ?>" class="btn show_results_btn w-100 rounded-pill py-2">
-                                        <i class="fa fa-list-alt me-2"></i>View Results
+                                    <button type="button" class="btn btn-secondary w-100 rounded-pill py-2" disabled>
+                                        <i class="fas fa-check-circle me-2"></i>Completed
                                     </button>
                                 <?php }
                             } else if ($res1['status'] == "Ended") { ?>
-                                <button type="button" id="<?php echo $res1['exam_id'] ?>" class="btn show_results_btn w-100 rounded-pill py-2">
-                                    <i class="fa fa-list-alt me-2"></i>View Results
+                                <button type="button" class="btn btn-secondary w-100 rounded-pill py-2" disabled>
+                                    <i class="fas fa-times-circle me-2"></i>Ended
                                 </button>
                             <?php } else { ?>
                                 <button type="button" id="<?php echo $res1['exam_id'] ?>" class="btn btn-primary exam_details_btn w-100 rounded-pill py-2">
@@ -118,19 +118,6 @@ include "assets/navbar.php";
                 }
             });
             onclick = window.open('exam_details.php', '_self');
-        });
-
-        $('.show_results_btn').on('click', function(e) {
-            var exam_id = $(this).attr('id');
-            $.ajax({
-                type: 'POST',
-                url: 'assets/data.php',
-                data: {
-                    'show_results_btn': true,
-                    'exam_id': exam_id
-                }
-            });
-            onclick = window.open('result.php', '_self');
         });
     </script>
 

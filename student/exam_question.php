@@ -137,7 +137,7 @@ if (!isset($_SESSION['exam_id'])) {
             if (total < 1) {
                 $("#exam_timer").TimeCircles().destroy();
                 alert('Exam Time Completed');
-                window.open('exam_result.php', '_self');
+                window.open('home.php', '_self');
             }
         });
 
@@ -273,7 +273,7 @@ if (!isset($_SESSION['exam_id'])) {
                             swal("Success", "Exam Submitted Successfully", "success", {
                                 timer: 2000
                             }).then(function() {
-                                window.location.href = "exam_result.php";
+                                window.location.href = "home.php";
                             })
                         }
                     });
