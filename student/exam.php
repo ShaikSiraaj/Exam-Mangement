@@ -46,7 +46,6 @@ include "assets/navbar.php";
                                 <th style="display:none;">Exam ID</th>
                                 <th class="pl-4">Exam Name</th>
                                 <th class="text-center">Exam Duration</th>
-                                <th class="text-center">Result Status</th>
                                 <th class="text-center">Status</th>
                                 <th class="text-center">Timetable</th>
                                 <th class="text-center" colspan="2">Action</th>
@@ -65,19 +64,6 @@ include "assets/navbar.php";
                                     <td id="exam_id" style="display:none;"><?php echo $res['exam_id'] ?></td>
                                     <td class="pl-4"><?php echo $res['exam_title'] ?></td>
                                     <td class="text-center"><?php echo $res['exam_time_limit'] ?> Minutes</td>
-                                    <td class="text-center"><?php
-                                                            if ($res['status'] == 'Pending' || $res['status'] == 'Started') {
-                                                                if (mysqli_num_rows($query1) > 0) {
-                                                                    if ($row1['attendence_status'] == "Ended") {
-                                                                        echo 'Published';
-                                                                    }
-                                                                } else {
-                                                                    echo 'Updated Soon';
-                                                                }
-                                                            } else if ($res['status'] == 'Ended') {
-                                                                echo 'Published';
-                                                            }
-                                                            ?></td>
                                     <?php
                                     $status = "";
                                     if (mysqli_num_rows($query1) > 0) {
@@ -111,7 +97,7 @@ include "assets/navbar.php";
                                     else if ($status == "<span class='badge badge-success'>Started</span>")
                                         echo '<td class="text-center" style="padding-left: 2px;"><a class="butn butn-danger exam_start_btn">Start</a></td>';
                                     else if ($status == "<span class='badge badge-secondary'>Ended</span>")
-                                        echo '<td class="text-center" style="padding-left: 2px;"><a class="butn butn-results show_results_btn">Resullt</a></td>';
+                                        echo '<td class="text-center" style="padding-left: 2px;"><a class="butn butn-secondary disabled">Ended</a></td>';
                                     ?>
                                 </tr>
                         <?php
@@ -151,19 +137,6 @@ include "assets/navbar.php";
                 }
             });
             onclick = window.open('start_exam.php', '_self');
-        });
-
-        $('.show_results_btn').on('click', function(e) {
-            var exam_id = $(this).closest('tr').find('#exam_id').text();
-            $.ajax({
-                type: 'POST',
-                url: 'assets/data.php',
-                data: {
-                    'show_results_btn': true,
-                    'exam_id': exam_id
-                }
-            });
-            onclick = window.open('result.php', '_self');
         });
     </script>
 
